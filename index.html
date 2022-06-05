@@ -92,18 +92,9 @@
 
   <div class="container mt-3">
     <div class="row">
-      <div id="alertMessage"></div>
-      
-
-      <!-- <div class="alert alert-info text-white alert-dismissible fade show" role="alert">
-        <span class="alert-icon"><i class="ni ni-like-2"></i></span>
-        <span class="alert-text"><strong>Edit!</strong> Employee updated successfully!</span>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-
-       -->
+      <div id="alertMessage">
+        <!-- ALERT  -->
+      </div>  
 
     </div>
     <div class="row">
@@ -111,14 +102,14 @@
         <h1 class="display-6">List of Employees</h1>
       </div>
       <div class="col text-end">
-        <button class="btn bg-gradient-primary mb-0" data-bs-toggle="modal" data-bs-target="#modal-add">Add</button>
+        <button class="btn bg-gradient-primary mb-0" onclick="AddButton()" data-bs-toggle="modal" data-bs-target="#modal-add-edit">Add</button>
         <!-- Modal -->
-        <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="modal-add"
+        <div class="modal fade" id="modal-add-edit" tabindex="-1" role="dialog" aria-labelledby="modal-add-edit"
           aria-hidden="true">
           <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h6 class="modal-title" id="modal-title-default">Add</h6>
+            <div class="modal-content" id="formEmployee">
+              <!-- <div class="modal-header">
+                <h6 class="modal-title" id="modal-title">Add</h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
                 </button>
@@ -129,35 +120,35 @@
                     <div class="col">
                       <div class="input-group input-group-static mb-2">
                         <label>First Name</label>
-                        <input type="text" class="form-control" id="firstName-add">
+                        <input type="text" class="form-control" id="firstName">
                       </div>
                     </div>
                     <div class="col">
                       <div class="input-group input-group-static mb-2">
                         <label>Last Name</label>
-                        <input type="text" class="form-control mb-2" id="lastName-add">
+                        <input type="text" class="form-control mb-2" id="lastName">
                       </div>
                     </div>
-                  </div>                  
-                  
+                  </div>
+              
                   <div class="input-group input-group-static mb-2">
                     <label>Email</label>
-                    <input type="email" class="form-control" id="email-add">
+                    <input type="email" class="form-control" id="email">
                   </div>
                   <div class="input-group input-group-static mb-2">
                     <label>Address</label>
-                    <input type="address" class="form-control mb-2" id="address-add">
+                    <input type="address" class="form-control mb-2" id="address">
                   </div>
                   <div class="input-group input-group-static mb-2">
                     <label>Phone</label>
-                    <input type="tel" class="form-control" id="phone-add">
+                    <input type="tel" class="form-control" id="phone">
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn bg-gradient-primary" onclick="saveEmployee()" data-bs-dismiss="modal">Save</button>
                 <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -209,8 +200,8 @@
                 </div>
               </div>
 
-              <!-- Modal Edit-->
-              <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="modal-edit"
+              <!-- Modal Edit -->
+              <!-- <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="modal-edit"
                 aria-hidden="true">
                 <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                   <div class="modal-content">
@@ -221,15 +212,15 @@
                       </button>
                     </div>
                     <div class="modal-body" id="editEmployee">
-                      <!-- Edit Employee -->
+                      
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn bg-gradient-primary">Save changes</button>
+                      <button type="button" class="btn bg-gradient-primary" data-bs-dismiss="modal" onclick="updateEmployee()">Save changes</button>
                       <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <!-- Modal Delete-->
               <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="modal-delete"
