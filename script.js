@@ -1,22 +1,23 @@
-const employeesList = document.getElementById('employeesList')
+const employeesList = document.getElementById('employeesList');
 const alertMessage = document.getElementById('alertMessage');
 const prevEmployee = document.getElementById('previewEmployee');
-const editEmployee = document.getElementById('editEmployee');
+const formEmployee = document.getElementById('formEmployee');
 
-let employees = '';
+let employeesHTML = '';
 let employeesArr = [];
 
-let firstNameValue =  document.getElementById('firstName-add');
-let lastNameValue = document.getElementById('lastName-add');
-let emailValue = document.getElementById('email-add');
-let addressValue = document.getElementById('address-add');
-let phoneValue = document.getElementById('phone-add');
+
+let firstNameValue;
+let lastNameValue;
+let emailValue;
+let addressValue;
+let phoneValue;
 
 
 //GET ALL DATA
 const renderData = (data) => {
     data.forEach((post) => {
-        employees += `
+        employeesHTML += `
             <tr id="${post._id}">   
                 <td>
                   <div class="d-flex px-2 py-1">
@@ -40,13 +41,13 @@ const renderData = (data) => {
                 </td>
                 <td class="align-middle">
                   <a href="#" data-bs-toggle="modal" data-bs-target="#modal-preview"><i class="material-icons">visibility</i></a>
-                  <a href="#" data-bs-toggle="modal" data-bs-target="#modal-edit"><i class="material-icons">edit</i></a>
+                  <a href="#" data-bs-toggle="modal" data-bs-target="#modal-add-edit"><i class="material-icons">edit</i></a>
                   <a href="#" data-bs-toggle="modal" data-bs-target="#modal-delete"><i class="material-icons">delete_forever</i></a>
                 </td>
               </tr>`;
         
     });
-    employeesList.innerHTML = employees;
+    employeesList.innerHTML = employeesHTML;
 };
 
 fetch("https://untitled-etb861i34su6.runkit.sh/api/employees")
@@ -61,60 +62,11 @@ fetch("https://untitled-etb861i34su6.runkit.sh/api/employees")
 
 
 
-// Create a new employee
-// method: POST
-
-function saveEmployee() {
-    //console.log(firstNameValue.value);
-
-    fetch('https://untitled-etb861i34su6.runkit.sh/api/employees/add', {
-        method: 'POST',
-        headers: {
-            'Content-type': 'application/json'
-        },
-        body: JSON.stringify({
-            firstName: firstNameValue.value,
-            lastName: lastNameValue.value,
-            email: emailValue.value,
-            address: addressValue.value,
-            phone: phoneValue.value
-        })
-    })
-    .then(res => res.json())
-    .then(data => {
-        renderData([data]);
-        employeesArr.push(data);
-
-        alertMessage.innerHTML = `
-        <div class="alert alert-success text-white alert-dismissible fade show" role="alert">
-          <span class="alert-icon"><i class="ni ni-like-2"></i></span>
-          <span class="alert-text"><strong>Add!</strong> Employee added successfully!</span>
-          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-          </button>
-        </div>`;
-      alertDismiss();
-
-    });
-
-    // reset the form
-    firstNameValue.value = '';
-    lastNameValue.value = '';
-    emailValue.value = '';
-    addressValue.value = '';
-    phoneValue.value = '';
-
-
-      
-}
-
-
 let idEmployee = "";
 
 employeesList.addEventListener('click', (e) => {
     e.preventDefault();
     idEmployee = e.target.parentElement.parentElement.parentElement.id;
-
 
 
     //GET DATA BY ID
@@ -161,44 +113,205 @@ employeesList.addEventListener('click', (e) => {
                           <p class="mb-0">${item.phone}</p>
                         </div>
                       </div>`;
-                      
-      editEmployee.innerHTML = `
-                      <form>
-                        <div class="row">
-                          <div class="col">
-                            <div class="input-group input-group-static mb-2">
-                              <label>First Name</label>
-                              <input type="text" value="${item.firstName}" class="form-control" id="first_name">
-                            </div>
-                          </div>
-                          <div class="col">
-                            <div class="input-group input-group-static mb-2">
-                              <label>Last Name</label>
-                              <input type="text" value="${item.lastName}" class="form-control mb-2">
-                            </div>
-                          </div>
-                        </div>
-                      
-                        <div class="input-group input-group-static mb-2">
-                          <label>Email</label>
-                          <input type="email" value="${item.email}" class="form-control">
-                        </div>
-                        <div class="input-group input-group-static mb-2">
-                          <label>Address</label>
-                          <input type="address" value="${item.address}" class="form-control mb-2">
-                        </div>
-                        <div class="input-group input-group-static mb-2">
-                          <label>Phone</label>
-                          <input type="tel" value="${item.phone}" class="form-control">
-                        </div>
-                      </form>`;  
+
+
+      formEmployee.innerHTML = `
+      <div class="modal-header">
+                <h6 class="modal-title" id="modal-title">Edit</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="row">
+                    <div class="col">
+                      <div class="input-group input-group-static mb-2">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" id="firstName" value="${item.firstName}">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="input-group input-group-static mb-2">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control mb-2" id="lastName" value="${item.lastName}">
+                      </div>
+                    </div>
+                  </div>                  
+                  
+                  <div class="input-group input-group-static mb-2">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="email" value="${item.email}">
+                  </div>
+                  <div class="input-group input-group-static mb-2">
+                    <label>Address</label>
+                    <input type="address" class="form-control mb-2" id="address" value="${item.address}">
+                  </div>
+                  <div class="input-group input-group-static mb-2">
+                    <label>Phone</label>
+                    <input type="tel" class="form-control" id="phone" value="${item.phone}">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-primary" onclick="updateEmployee()" data-bs-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
+              </div>`;
 
     
     }
   });
+
+  firstNameValue = document.getElementById('firstName');
+  lastNameValue = document.getElementById('lastName');
+  emailValue = document.getElementById('email');
+  addressValue = document.getElementById('address');
+  phoneValue = document.getElementById('phone');
     
 
 });
+
+
+function AddButton() {
+  formEmployee.innerHTML = `
+              <div class="modal-header">
+                <h6 class="modal-title" id="modal-title">Add</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form>
+                  <div class="row">
+                    <div class="col">
+                      <div class="input-group input-group-static mb-2">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" id="firstName">
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="input-group input-group-static mb-2">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control mb-2" id="lastName">
+                      </div>
+                    </div>
+                  </div>                  
+                  
+                  <div class="input-group input-group-static mb-2">
+                    <label>Email</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                  <div class="input-group input-group-static mb-2">
+                    <label>Address</label>
+                    <input type="address" class="form-control mb-2" id="address">
+                  </div>
+                  <div class="input-group input-group-static mb-2">
+                    <label>Phone</label>
+                    <input type="tel" class="form-control" id="phone">
+                  </div>
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn bg-gradient-primary" onclick="saveEmployee()" data-bs-dismiss="modal">Save</button>
+                <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
+              </div>`;
+
+  firstNameValue = document.getElementById('firstName');
+  lastNameValue = document.getElementById('lastName');
+  emailValue = document.getElementById('email');
+  addressValue = document.getElementById('address');
+  phoneValue = document.getElementById('phone');
+}
+
+
+
+
+// Create a new employee
+// method: POST
+
+function saveEmployee() {
+    //console.log(firstNameValue.value);
+
+    fetch('https://untitled-etb861i34su6.runkit.sh/api/employees/add', {
+        method: 'POST',
+        headers: {
+            'Content-type': 'application/json'
+        },
+        body: JSON.stringify({
+            firstName: firstNameValue.value,
+            lastName: lastNameValue.value,
+            email: emailValue.value,
+            address: addressValue.value,
+            phone: phoneValue.value
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        renderData([data]);
+        employeesArr.push(data);
+
+        alertMessage.innerHTML = `
+        <div class="alert alert-success text-white alert-dismissible fade show" role="alert">
+          <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+          <span class="alert-text"><strong>Add!</strong> Employee added successfully!</span>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+          </button>
+        </div>`;
+      alertDismiss();
+
+    });
+      
+}
+
+
+function updateEmployee() {
+  fetch('https://untitled-etb861i34su6.runkit.sh/api/employees/' + idEmployee, {
+    method: 'PATCH',
+    headers: {
+        'Content-type': 'application/json',
+    },
+    body: JSON.stringify({
+    firstName: firstNameValue.value,
+    lastName: lastNameValue.value,
+    email: emailValue.value,
+    address: addressValue.value,
+    phone: phoneValue.value
+    })
+  })
+    .then(res => res.json())
+    .then(() => {
+      for (let i = 0; i < employeesArr.length; i++) {
+        if (employeesArr[i]._id === idEmployee) {
+          employeesArr[i].firstName = firstNameValue.value;
+          employeesArr[i].lastName = lastNameValue.value;
+          employeesArr[i].email = emailValue.value;
+          employeesArr[i].address = addressValue.value;
+          employeesArr[i].phone = phoneValue.value;          
+        }
+                
+      }
+      employeesHTML = '';
+      renderData(employeesArr);
+
+
+      alertMessage.innerHTML = `
+      <div class="alert alert-info text-white alert-dismissible fade show" role="alert">
+        <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+        <span class="alert-text"><strong>Edit!</strong> Employee updated successfully!</span>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>`;
+      alertDismiss();
+
+    });
+
+  
+}
+
+
+
 
 
 function deleteEmployee() {
@@ -210,19 +323,19 @@ function deleteEmployee() {
         })
         .then(() => {
           $(document).ready(function(){
-            $("#"+idEmployee).remove();            
+            $("#"+idEmployee).remove();
           });
           employeesArr.splice(employeesArr.findIndex((item)=> item._id === idEmployee),1);
-          employees = "";
 
             if (employeesArr.length == 0) {
                 employeesList.innerHTML = `
                 <tr>
                   <td colspan="6">
                     <p class="lead text-center">Record is empty</p>
-                  </td>                
+                  </td>
                 </tr>`;
               }else{
+                employeesHTML = '';
                 renderData(employeesArr);
               }
 
@@ -241,10 +354,15 @@ function deleteEmployee() {
 
 }
 
+
+
+
+
+
 function alertDismiss(){
   window.setTimeout(function() {
     $(".alert").fadeTo(500, 0).slideUp(500, function(){
-        $(this).remove(); 
+        $(this).remove();
     });
   }, 3500);
 }
