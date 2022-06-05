@@ -313,7 +313,6 @@ function updateEmployee() {
 
 
 
-
 function deleteEmployee() {
 
     // Delete a student
@@ -325,18 +324,20 @@ function deleteEmployee() {
           $(document).ready(function(){
             $("#"+idEmployee).remove();
           });
+          
           employeesArr.splice(employeesArr.findIndex((item)=> item._id === idEmployee),1);
 
-            if (employeesArr.length == 0) {
+            if (employeesArr.length > 0) {
+              employeesHTML = '';
+              renderData(employeesArr);                
+            }else{       
+              employeesHTML = '';         
                 employeesList.innerHTML = `
                 <tr>
                   <td colspan="6">
                     <p class="lead text-center">Record is empty</p>
                   </td>
                 </tr>`;
-              }else{
-                employeesHTML = '';
-                renderData(employeesArr);
               }
 
         alertMessage.innerHTML = `
