@@ -12,46 +12,71 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
 <!DOCTYPE html>
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
 
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Employee Management</title>
 
-<title>Employee Management</title>
+    <!--     Fonts and icons     -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0"
+    />
 
+    <!-- Nucleo Icons -->
+    <link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
+    <link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
 
+    <!-- Material Icons -->
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet"
+    />
 
-<!--     Fonts and icons     -->
-<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900|Roboto+Slab:400,700" />
+    <!-- CSS Files -->
+    <link
+      id="pagestyle"
+      href="./assets/css/material-kit.css?v=3.0.2"
+      rel="stylesheet"
+    />
+  </head>
 
-<!-- Nucleo Icons -->
-<link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
-<link href="./assets/css/nucleo-svg.css" rel="stylesheet" />
-
-
-<!-- Material Icons -->
-<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-
-<!-- CSS Files -->
-<link id="pagestyle" href="./assets/css/material-kit.css?v=3.0.2" rel="stylesheet" />
-
-
-</head>
-
-<body class="index-page bg-gray-200">
-  <!-- Navbar Light -->
-  <nav class="navbar navbar-expand-lg navbar-light bg-white z-index-3 py-3">
-    <div class="container">
-      <a class="navbar-brand" href="" rel="tooltip" title="Designed and Coded by Creative Tim" data-placement="bottom"
-        target="_blank">
-        Employee Management
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-        aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navigation">
-        <!-- <ul class="navbar-nav navbar-nav-hover mx-auto">
+  <body class="index-page bg-gray-200">
+    <!-- Navbar Light -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white z-index-3 py-3">
+      <div class="container">
+        <a
+          class="navbar-brand"
+          href=""
+          rel="tooltip"
+          title="Designed and Coded by Creative Tim"
+          data-placement="bottom"
+          target="_blank"
+        >
+          Employee Management
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navigation"
+          aria-controls="navigation"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navigation">
+          <!-- <ul class="navbar-nav navbar-nav-hover mx-auto">
           <li class="nav-item px-3">
             <a class="nav-link">
               Pages
@@ -76,39 +101,52 @@
             </a>
           </li>
         </ul> -->
-  
-        <ul class="navbar-nav ms-auto">
-          
-          <a class="nav-link ">
-            <i class="material-icons float-start">verified_user</i>
-            Admin
-          </a>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- End Navbar -->
-  
 
-  <div class="container mt-3">
-    <div class="row">
-      <div id="alertMessage">
-        <!-- ALERT  -->
-      </div>  
-
-    </div>
-    <div class="row">
-      <div class="col">
-        <h1 class="display-6">List of Employees</h1>
+          <ul class="navbar-nav ms-auto">
+            <a class="nav-link">
+              <i class="material-icons float-start">verified_user</i>
+              Admin
+            </a>
+          </ul>
+        </div>
       </div>
-      <div class="col text-end">
-        <button class="btn bg-gradient-primary mb-0" onclick="AddButton()" data-bs-toggle="modal" data-bs-target="#modal-add-edit">Add</button>
-        <!-- Modal -->
-        <div class="modal fade" id="modal-add-edit" tabindex="-1" role="dialog" aria-labelledby="modal-add-edit"
-          aria-hidden="true">
-          <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-            <div class="modal-content" id="formEmployee">
-              <!-- <div class="modal-header">
+    </nav>
+    <!-- End Navbar -->
+
+    <div class="container mt-3">
+      <div class="row">
+        <div id="alertMessage">
+          <!-- ALERT  -->
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <h1 class="display-6">List of Employees</h1>
+        </div>
+        <div class="col text-end">
+          <button
+            class="btn bg-gradient-primary mb-0"
+            onclick="AddButton()"
+            data-bs-toggle="modal"
+            data-bs-target="#modal-add-edit"
+          >
+            Add
+          </button>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="modal-add-edit"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="modal-add-edit"
+            aria-hidden="true"
+          >
+            <div
+              class="modal-dialog modal- modal-dialog-centered modal-"
+              role="document"
+            >
+              <div class="modal-content" id="formEmployee">
+                <!-- <div class="modal-header">
                 <h6 class="modal-title" id="modal-title">Add</h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">×</span>
@@ -149,59 +187,122 @@
                 <button type="button" class="btn bg-gradient-primary" onclick="saveEmployee()" data-bs-dismiss="modal">Save</button>
                 <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
               </div> -->
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
-      
-    </div>
-    <div class="row">
-      <div class="card">
-        <div class="table-responsive">
-          <table class="table align-items-center mb-0">
-            <thead>
-              <tr>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">First Name</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Last Name</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Email</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Address</th>
-                <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Phone</th>
-                <th class="text-secondary opacity-7"></th>
-              </tr>
-            </thead>
-            <tbody id="employeesList">
-              <tr>
-                <td colspan="6">
-                  <p class="lead text-center">Record is empty</p>
-                </td>                
-              </tr>
+      <div class="row">
+        <div class="card">
+          <div class="table-responsive">
+            <table class="table align-items-center mb-0">
+              <thead>
+                <tr>
+                  <th
+                    class="
+                      text-uppercase text-secondary text-xxs
+                      font-weight-bolder
+                      opacity-7
+                      ps-2
+                    "
+                  >
+                    First Name
+                  </th>
+                  <th
+                    class="
+                      text-uppercase text-secondary text-xxs
+                      font-weight-bolder
+                      opacity-7
+                      ps-2
+                    "
+                  >
+                    Last Name
+                  </th>
+                  <th
+                    class="
+                      text-uppercase text-secondary text-xxs
+                      font-weight-bolder
+                      opacity-7
+                      ps-2
+                    "
+                  >
+                    Email
+                  </th>
+                  <th
+                    class="
+                      text-uppercase text-secondary text-xxs
+                      font-weight-bolder
+                      opacity-7
+                      ps-2
+                    "
+                  >
+                    Address
+                  </th>
+                  <th
+                    class="
+                      text-uppercase text-secondary text-xxs
+                      font-weight-bolder
+                      opacity-7
+                      ps-2
+                    "
+                  >
+                    Phone
+                  </th>
+                  <th class="text-secondary opacity-7"></th>
+                </tr>
+              </thead>
+              <tbody id="employeesList">
+                <tr>
+                  <td colspan="6">
+                    <p class="lead text-center">Record is empty</p>
+                  </td>
+                </tr>
 
-
-
-              <!-- Modal Preview-->
-              <div class="modal fade" id="modal-preview" tabindex="-1" role="dialog" aria-labelledby="modal-preview" aria-hidden="true">
-                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h6 class="modal-title" id="modal-title-default">Preview</h6>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                      </button>
-                    </div>
-                    <div class="modal-body" id="previewEmployee">                      
-                      <!-- Preview Employee -->
-                      
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
+                <!-- Modal Preview-->
+                <div
+                  class="modal fade"
+                  id="modal-preview"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="modal-preview"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="modal-dialog modal- modal-dialog-centered modal-"
+                    role="document"
+                  >
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id="modal-title-default">
+                          Preview
+                        </h6>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">×</span>
+                        </button>
+                      </div>
+                      <div class="modal-body" id="previewEmployee">
+                        <!-- Preview Employee -->
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-link ml-auto"
+                          data-bs-dismiss="modal"
+                        >
+                          Close
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
 
-              <!-- Modal Edit -->
-              <!-- <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="modal-edit"
+                <!-- Modal Edit -->
+                <!-- <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" aria-labelledby="modal-edit"
                 aria-hidden="true">
                 <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
                   <div class="modal-content">
@@ -222,107 +323,146 @@
                 </div>
               </div> -->
 
-              <!-- Modal Delete-->
-              <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="modal-delete"
-                aria-hidden="true">
-                <div class="modal-dialog modal- modal-dialog-centered modal-" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h6 class="modal-title" id="modal-title-default">Delete Confirmation</h6>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                      </button>
-                    </div>
-                    <div class="modal-body">
-                      <div class="py-3 text-center">
-                        <i class="ni ni-bell-55 ni-3x"></i>
-                        <h4 class="text-gradient text-danger mt-4">Are you sure?</h4>
-                        <p>You won't be able to revert this!</p>
+                <!-- Modal Delete-->
+                <div
+                  class="modal fade"
+                  id="modal-delete"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="modal-delete"
+                  aria-hidden="true"
+                >
+                  <div
+                    class="modal-dialog modal- modal-dialog-centered modal-"
+                    role="document"
+                  >
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h6 class="modal-title" id="modal-title-default">
+                          Delete Confirmation
+                        </h6>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">×</span>
+                        </button>
                       </div>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn bg-gradient-primary" data-bs-dismiss="modal" onclick="deleteEmployee()">Delete</button>
-                      <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Cancel</button>
+                      <div class="modal-body">
+                        <div class="py-3 text-center">
+                          <span class="material-symbols-outlined">
+                            delete_forever
+                          </span>
+                          <h4 class="text-gradient text-danger mt-4">
+                            Are you sure?
+                          </h4>
+                          <p>You won't be able to revert this!</p>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn bg-gradient-primary"
+                          data-bs-dismiss="modal"
+                          onclick="deleteEmployee()"
+                        >
+                          Delete
+                        </button>
+                        <button
+                          type="button"
+                          class="btn btn-link ml-auto"
+                          data-bs-dismiss="modal"
+                        >
+                          Cancel
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-
-
-            </tbody>
-          </table>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
-<script src="script.js"></script>
-  
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!-- <script src="./assets/js/jquery/jquery.min.js"></script> -->
+    <script src="script.js"></script>
 
-<!--   Core JS Files   -->
-<script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
-<script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
-<script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <!-- <script src="./assets/js/jquery/jquery.min.js"></script> -->
 
-<!--  Plugin for TypedJS, full documentation here: https://github.com/inorganik/CountUp.js -->
-<!-- <script src="./assets/js/plugins/countup.min.js"></script>
+    <!--   Core JS Files   -->
+    <script
+      src="./assets/js/core/popper.min.js"
+      type="text/javascript"
+    ></script>
+    <script
+      src="./assets/js/core/bootstrap.min.js"
+      type="text/javascript"
+    ></script>
+    <script src="./assets/js/plugins/perfect-scrollbar.min.js"></script>
+
+    <!--  Plugin for TypedJS, full documentation here: https://github.com/inorganik/CountUp.js -->
+    <!-- <script src="./assets/js/plugins/countup.min.js"></script>
 <script src="./assets/js/plugins/choices.min.js"></script>
 <script src="./assets/js/plugins/prism.min.js"></script>
 <script src="./assets/js/plugins/highlight.min.js"></script> -->
 
+    <!--  Plugin for Parallax, full documentation here: https://github.com/dixonandmoe/rellax -->
+    <!-- <script src="./assets/js/plugins/rellax.min.js"></script> -->
+    <!--  Plugin for TiltJS, full documentation here: https://gijsroge.github.io/tilt.js/ -->
+    <!-- <script src="./assets/js/plugins/tilt.min.js"></script> -->
+    <!--  Plugin for Selectpicker - ChoicesJS, full documentation here: https://github.com/jshjohnson/Choices -->
+    <!-- <script src="./assets/js/plugins/choices.min.js"></script> -->
 
+    <!--  Plugin for Parallax, full documentation here: https://github.com/wagerfield/parallax  -->
+    <!-- <script src="./assets/js/plugins/parallax.min.js"></script> -->
 
-<!--  Plugin for Parallax, full documentation here: https://github.com/dixonandmoe/rellax -->
-<!-- <script src="./assets/js/plugins/rellax.min.js"></script> -->
-<!--  Plugin for TiltJS, full documentation here: https://gijsroge.github.io/tilt.js/ -->
-<!-- <script src="./assets/js/plugins/tilt.min.js"></script> -->
-<!--  Plugin for Selectpicker - ChoicesJS, full documentation here: https://github.com/jshjohnson/Choices -->
-<!-- <script src="./assets/js/plugins/choices.min.js"></script> -->
+    <!-- Control Center for Material UI Kit: parallax effects, scripts for the example pages etc -->
+    <!--  Google Maps Plugin    -->
 
+    <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script> -->
+    <script
+      src="./assets/js/material-kit.min.js?v=3.0.2"
+      type="text/javascript"
+    ></script>
 
-<!--  Plugin for Parallax, full documentation here: https://github.com/wagerfield/parallax  -->
-<!-- <script src="./assets/js/plugins/parallax.min.js"></script> -->
-
-
-<!-- Control Center for Material UI Kit: parallax effects, scripts for the example pages etc -->
-<!--  Google Maps Plugin    -->
-
-<!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDTTfWur0PDbZWPr7Pmq8K3jiDp0_xUziI"></script> -->
-<script src="./assets/js/material-kit.min.js?v=3.0.2" type="text/javascript"></script>
-
-<script type="text/javascript">
-
-  if (document.getElementById('state1')) {
-    const countUp = new CountUp('state1', document.getElementById("state1").getAttribute("countTo"));
-    if (!countUp.error) {
-      countUp.start();
-    } else {
-      console.error(countUp.error);
-    }
-  }
-  if (document.getElementById('state2')) {
-    const countUp1 = new CountUp('state2', document.getElementById("state2").getAttribute("countTo"));
-    if (!countUp1.error) {
-      countUp1.start();
-    } else {
-      console.error(countUp1.error);
-    }
-  }
-  if (document.getElementById('state3')) {
-    const countUp2 = new CountUp('state3', document.getElementById("state3").getAttribute("countTo"));
-    if (!countUp2.error) {
-      countUp2.start();
-    } else {
-      console.error(countUp2.error);
-    };
-  }
-</script>
-
-
-
-
-</body>
-
+    <script type="text/javascript">
+      if (document.getElementById('state1')) {
+        const countUp = new CountUp(
+          'state1',
+          document.getElementById('state1').getAttribute('countTo')
+        );
+        if (!countUp.error) {
+          countUp.start();
+        } else {
+          console.error(countUp.error);
+        }
+      }
+      if (document.getElementById('state2')) {
+        const countUp1 = new CountUp(
+          'state2',
+          document.getElementById('state2').getAttribute('countTo')
+        );
+        if (!countUp1.error) {
+          countUp1.start();
+        } else {
+          console.error(countUp1.error);
+        }
+      }
+      if (document.getElementById('state3')) {
+        const countUp2 = new CountUp(
+          'state3',
+          document.getElementById('state3').getAttribute('countTo')
+        );
+        if (!countUp2.error) {
+          countUp2.start();
+        } else {
+          console.error(countUp2.error);
+        }
+      }
+    </script>
+  </body>
 </html>

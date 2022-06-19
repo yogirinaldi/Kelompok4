@@ -252,7 +252,7 @@ function saveEmployee() {
 
         alertMessage.innerHTML = `
         <div class="alert alert-success text-white alert-dismissible fade show" role="alert">
-          <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+          <span class="alert-icon"><i class="material-icons align-middle">thumb_up</i></span>
           <span class="alert-text"><strong>Add!</strong> Employee added successfully!</span>
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -297,7 +297,7 @@ function updateEmployee() {
 
       alertMessage.innerHTML = `
       <div class="alert alert-info text-white alert-dismissible fade show" role="alert">
-        <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+        <span class="alert-icon"><i class="material-icons align-middle">thumb_up</i></span>
         <span class="alert-text"><strong>Edit!</strong> Employee updated successfully!</span>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -342,7 +342,7 @@ function deleteEmployee() {
 
         alertMessage.innerHTML = `
           <div class="alert alert-danger text-white alert-dismissible fade show" role="alert">
-            <span class="alert-icon"><i class="ni ni-like-2"></i></span>
+            <span class="alert-icon"><i class="material-icons align-middle">thumb_up</i></span>
             <span class="alert-text"><strong>Delete!</strong> Employee deleted successfuly!</span>
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
               <span aria-hidden="true">&times;</span>
