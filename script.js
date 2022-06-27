@@ -114,7 +114,7 @@ employeesList.addEventListener('click', (e) => {
                         </div>
                       </div>`;
 
-
+      //EDIT EMPLOYEE
       formEmployee.innerHTML = `
       <div class="modal-header">
                 <h6 class="modal-title" id="modal-title">Edit</h6>
@@ -123,38 +123,38 @@ employeesList.addEventListener('click', (e) => {
                 </button>
               </div>
               <div class="modal-body">
-                <form>
+                <form id="EditSubmit" onsubmit="return updateEmployee()">
                   <div class="row">
                     <div class="col">
                       <div class="input-group input-group-static mb-2">
                         <label>First Name</label>
-                        <input type="text" class="form-control" id="firstName" value="${item.firstName}">
+                        <input type="text" class="form-control" id="firstName" value="${item.firstName}" required>
                       </div>
                     </div>
                     <div class="col">
                       <div class="input-group input-group-static mb-2">
                         <label>Last Name</label>
-                        <input type="text" class="form-control mb-2" id="lastName" value="${item.lastName}">
+                        <input type="text" class="form-control mb-2" id="lastName" value="${item.lastName}" required>
                       </div>
                     </div>
                   </div>                  
                   
                   <div class="input-group input-group-static mb-2">
                     <label>Email</label>
-                    <input type="email" class="form-control" id="email" value="${item.email}">
+                    <input type="email" class="form-control" id="email" value="${item.email}" required>
                   </div>
                   <div class="input-group input-group-static mb-2">
                     <label>Address</label>
-                    <input type="address" class="form-control mb-2" id="address" value="${item.address}">
+                    <input type="address" class="form-control mb-2" id="address" value="${item.address}" required>
                   </div>
                   <div class="input-group input-group-static mb-2">
                     <label>Phone</label>
-                    <input type="tel" class="form-control" id="phone" value="${item.phone}">
+                    <input type="tel" class="form-control" id="phone" value="${item.phone}" pattern="[+]62[0-9]{11}" placeholder="+6281234567890" required>
                   </div>
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn bg-gradient-primary" onclick="updateEmployee()" data-bs-dismiss="modal">Save</button>
+                <button type="submit" form="EditSubmit" class="btn bg-gradient-primary" data-bs-dismiss="modal">Save</button>
                 <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
               </div>`;
 
@@ -181,38 +181,39 @@ function AddButton() {
                 </button>
               </div>
               <div class="modal-body">
-                <form>
+                <form id="AddSubmit" onsubmit="return saveEmployee()">
                   <div class="row">
                     <div class="col">
                       <div class="input-group input-group-static mb-2">
                         <label>First Name</label>
-                        <input type="text" class="form-control" id="firstName">
+                        <input type="text" class="form-control" id="firstName" required>
                       </div>
                     </div>
                     <div class="col">
                       <div class="input-group input-group-static mb-2">
                         <label>Last Name</label>
-                        <input type="text" class="form-control mb-2" id="lastName">
+                        <input type="text" class="form-control mb-2" id="lastName" required>
                       </div>
                     </div>
                   </div>                  
                   
                   <div class="input-group input-group-static mb-2">
                     <label>Email</label>
-                    <input type="email" class="form-control" id="email">
+                    <input type="email" class="form-control" id="email" required>
                   </div>
                   <div class="input-group input-group-static mb-2">
                     <label>Address</label>
-                    <input type="address" class="form-control mb-2" id="address">
+                    <input type="address" class="form-control mb-2" id="address" required>
                   </div>
                   <div class="input-group input-group-static mb-2">
                     <label>Phone</label>
-                    <input type="tel" class="form-control" id="phone">
+                    <input type="tel" class="form-control" id="phone" pattern="[+]62[0-9]{11}" placeholder="+6281234567890" required>
                   </div>
+                  
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn bg-gradient-primary" onclick="saveEmployee()" data-bs-dismiss="modal">Save</button>
+                <button type="submit" form="AddSubmit" class="btn bg-gradient-primary" data-bs-dismiss="modal">Save</button>
                 <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
               </div>`;
 
@@ -230,7 +231,7 @@ function AddButton() {
 // method: POST
 
 function saveEmployee() {
-    //console.log(firstNameValue.value);
+    //console.log("firstNameValue.value");
 
     fetch('https://untitled-etb861i34su6.runkit.sh/api/employees/add', {
         method: 'POST',
@@ -261,6 +262,8 @@ function saveEmployee() {
       alertDismiss();
 
     });
+
+    return false;
       
 }
 
@@ -306,6 +309,8 @@ function updateEmployee() {
       alertDismiss();
 
     });
+
+    return false;
 
   
 }
@@ -354,10 +359,6 @@ function deleteEmployee() {
       
 
 }
-
-
-
-
 
 
 function alertDismiss(){
