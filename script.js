@@ -378,7 +378,7 @@ function alertDismiss(){
 
 function modalDismiss(){
   window.setTimeout(function() {
-    $(".modal").slideUp(500, function(){
+    $(".modal").slideUp(00, function(){
         $(this).modal('hide');
     });
   }, 100);
