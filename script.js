@@ -154,7 +154,7 @@ employeesList.addEventListener('click', (e) => {
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="submit" form="EditSubmit" class="btn bg-gradient-primary" data-bs-dismiss="modal">Save</button>
+                <button type="submit" form="EditSubmit" class="btn bg-gradient-primary">Save</button>
                 <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
               </div>`;
 
@@ -213,7 +213,7 @@ function AddButton() {
                 </form>
               </div>
               <div class="modal-footer">
-                <button type="submit" form="AddSubmit" class="btn bg-gradient-primary" data-bs-dismiss="modal">Save</button>
+                <button type="submit" form="AddSubmit" class="btn bg-gradient-primary">Save</button>
                 <button type="button" class="btn btn-link  ml-auto" data-bs-dismiss="modal">Close</button>
               </div>`;
 
@@ -260,6 +260,7 @@ function saveEmployee() {
           </button>
         </div>`;
       alertDismiss();
+      modalDismiss();
 
     });
 
@@ -307,6 +308,7 @@ function updateEmployee() {
         </button>
       </div>`;
       alertDismiss();
+      modalDismiss();
 
     });
 
@@ -354,11 +356,16 @@ function deleteEmployee() {
             </button>
           </div>`;
         alertDismiss();
+        
                    
         });
       
 
 }
+
+
+
+
 
 
 function alertDismiss(){
@@ -367,5 +374,13 @@ function alertDismiss(){
         $(this).remove();
     });
   }, 3500);
+}
+
+function modalDismiss(){
+  window.setTimeout(function() {
+    $(".modal").slideUp(500, function(){
+        $(this).modal('hide');
+    });
+  }, 100);
 }
 
